@@ -13,7 +13,7 @@ const current= await getUserById(user?.id)
 
 
   return <div>
-    <Todos todos={data} user={current[0]} />;
+    <Todos todos={data} user={current} />;
 
   </div>
 }

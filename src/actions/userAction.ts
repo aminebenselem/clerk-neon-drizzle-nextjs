@@ -9,8 +9,8 @@ export const getAllusers = async () => {
   return data;
 };
 
-export const getUserById = async (id:number)=> {
-const data = await db.select().from(users).where(eq(users.id,id))
+export const getUserById = async (id:any)=> {
+const data = await db.select().from(users).where(eq(users.clerkId,id))
 return data;
 }
 
