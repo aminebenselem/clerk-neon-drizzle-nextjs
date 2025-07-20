@@ -14,6 +14,14 @@ const data = await db.select().from(users).where(eq(users.id,id))
 return data;
 }
 
-export const addUser = async (username:string,email:string,)=>{
+export const addUser = async (user:any)=>{
+  await db.insert(users).values({
+    clerkId:user?.clerkId,
+    email:user?.email,
+    firstName:user?.firstName,
+    username:user?.username,
+    lastName:user?.lastName,
+    photo:user?.photo
+  });
 
 }
