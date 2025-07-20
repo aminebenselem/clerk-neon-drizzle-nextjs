@@ -1,6 +1,5 @@
 "use server";
 import { eq, not } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 import { db } from "@/db/drizzle";
 import { todo } from "@/db/schema";
 
@@ -20,7 +19,6 @@ export const addTodo = async (id: number, text: string ,userId:any) => {
 export const deleteTodo = async (id: number) => {
   await db.delete(todo).where(eq(todo.id, id));
 
-  revalidatePath("/");
 };
 
 export const toggleTodo = async (id: number) => {
@@ -31,7 +29,6 @@ export const toggleTodo = async (id: number) => {
     })
     .where(eq(todo.id, id));
 
-  revalidatePath("/");
 };
 
 export const editTodo = async (id: number, text: string) => {
@@ -42,5 +39,4 @@ export const editTodo = async (id: number, text: string) => {
     })
     .where(eq(todo.id, id));
 
-  revalidatePath("/");
 };
