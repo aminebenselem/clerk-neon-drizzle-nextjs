@@ -3,10 +3,13 @@ import { eq, not } from "drizzle-orm";
 import { db } from "@/db/drizzle";
 import { todo } from "@/db/schema";
 
-export const getData = async () => {
-  const data = await db.select().from(todo);
+
+
+export const getData = async (userId: number) => {
+  const data = await db.select().from(todo).where(eq(todo.userId, userId));
   return data;
 };
+
 
 export const addTodo = async (id: number, text: string ,userId:any) => {
   await db.insert(todo).values({
