@@ -22,6 +22,7 @@ export const addUser = async (user:any)=>{
     username:user?.username,
     lastName:user?.lastName,
     photo:user?.photo
-  });
+  })
+  .returning({clerkId:users?.clerkId})
 
 }
